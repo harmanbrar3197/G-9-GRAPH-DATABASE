@@ -1,0 +1,15 @@
+# Credentials and local configuration
+.env
+*.env
+credentials*
+secrets*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Benchmark outputs (commit selected, verified results only)
+benchmark/data/
+results/raw_local/

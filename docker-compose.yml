@@ -1,0 +1,17 @@
+# Starts PostgreSQL 16 and Neo4j 5 Community with comparable 1 GB memory budgets.
+# Edit the memory values to suit your machine and record them in Table III of the article.
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: pw
+      POSTGRES_DB: g9
+    command: ["postgres", "-c", "shared_buffers=1GB", "-c", "effective_cache_size=3GB", "-c", "work_mem=64MB"]
+    ports: ["5432:5432"]
+  neo4j:
+    image: neo4j:5-community
+    environment:
+      NEO4J_AUTH: neo4j/password12345
+      NEO4J_server_memory_pagecache_size: 1G
+      NEO4J_server_memory_heap_max__size: 1G
+    ports: ["7474:7474", "7687:7687"]
